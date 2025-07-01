@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MeuPrompt</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>Pastas</h2>
+      <ul id="folder-list">
+        <!-- Pastas serão adicionadas aqui via JavaScript -->
+      </ul>
+      <button id="add-folder-btn">Nova Pasta</button>
+    </aside>
+    <main class="main-content">
+      <header>
+        <h1>Prompts</h1>
+        <div class="search-container">
+          <input type="text" id="search-input" placeholder="Pesquisar prompts...">
+        </div>
+        <button id="add-prompt-btn">Novo Prompt</button>
+      </header>
+      <section id="prompt-display-area">
+        <!-- Prompts serão exibidos aqui -->
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal para Adicionar/Editar Prompt -->
+  <div id="prompt-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h3 id="modal-title">Adicionar Novo Prompt</h3>
+      <label for="prompt-title">Título:</label>
+      <input type="text" id="prompt-title" name="prompt-title">
+      <label for="prompt-content">Prompt:</label>
+      <textarea id="prompt-content" name="prompt-content" rows="6"></textarea>
+      <label for="prompt-folder">Pasta:</label>
+      <select id="prompt-folder-select">
+        <!-- Opções de pasta serão preenchidas aqui -->
+      </select>
+      <button id="save-prompt-btn">Salvar</button>
+    </div>
+  </div>
+
+  <!-- Modal para Adicionar Pasta -->
+  <div id="folder-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h3>Nova Pasta</h3>
+      <label for="folder-name">Nome da Pasta:</label>
+      <input type="text" id="folder-name" name="folder-name">
+      <button id="save-folder-btn">Salvar Pasta</button>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

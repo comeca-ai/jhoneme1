@@ -1,0 +1,265 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  width: 500px; /* Ajuste conforme necessário */
+  height: 400px; /* Ajuste conforme necessário */
+  display: flex;
+  background-color: #f4f4f4;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.sidebar {
+  width: 150px;
+  background-color: #e9e9e9;
+  padding: 15px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #ccc;
+}
+
+.sidebar h2 {
+  margin-top: 0;
+  font-size: 1.2em;
+  color: #333;
+}
+
+#folder-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+#folder-list li {
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  font-size: 0.95em;
+}
+
+#folder-list li:hover, #folder-list li.active {
+  background-color: #d1d1d1;
+}
+
+#folder-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-folder-btn {
+  background: none;
+  border: none;
+  color: #dc3545;
+  cursor: pointer;
+  font-size: 0.9em;
+  padding: 2px 5px;
+  border-radius: 3px;
+  margin-left: 5px;
+}
+
+.delete-folder-btn:hover {
+  background-color: #f0f0f0;
+  color: #c82333;
+}
+
+#add-folder-btn {
+  background-color: #5cb85c;
+  color: white;
+  border: none;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: auto; /* Empurra para o final */
+}
+
+#add-folder-btn:hover {
+  background-color: #4cae4c;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 15px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Para o caso de muitos prompts */
+}
+
+.main-content header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.main-content header h1 {
+  margin: 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.search-container input[type="text"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 150px; /* Ajuste conforme necessário */
+}
+
+#add-prompt-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#add-prompt-btn:hover {
+  background-color: #0056b3;
+}
+
+#prompt-display-area .prompt-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.prompt-item h4 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: #007bff;
+}
+
+.prompt-item p {
+  margin-bottom: 10px;
+  white-space: pre-wrap; /* Mantém a formatação do prompt */
+  font-size: 0.9em;
+  color: #555;
+}
+
+.prompt-actions button {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin-right: 5px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.8em;
+}
+
+.prompt-actions button.copy-btn {
+  background-color: #17a2b8;
+}
+.prompt-actions button.edit-btn {
+  background-color: #ffc107;
+  color: #333;
+}
+.prompt-actions button.delete-btn {
+  background-color: #dc3545;
+}
+
+.prompt-actions button:hover {
+  opacity: 0.8;
+}
+
+
+/* Estilos do Modal */
+.modal {
+  display: none; /* Oculto por padrão */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.modal-content label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.modal-content input[type="text"],
+.modal-content textarea,
+.modal-content select {
+  width: calc(100% - 22px); /* Ajusta para padding e borda */
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.modal-content textarea {
+  resize: vertical; /* Permite redimensionamento vertical */
+}
+
+.modal-content button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.modal-content button:hover {
+  background-color: #0056b3;
+}
+
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
